@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="app.component.css"/>
+      <title>DevisesChange</title>
+  </head>
+  <body>
+    <h3> CONVERSION DE DEVISE</h3>
+
+    <table>
+      <tr><td><label for="montantFcfa">montant à convertir</label></td>
+        <td>
+          <p>
+            <form method="post" action="traitement.php">
+              <p>
+                <input [(ngModel)]="montant"  name="montant" type="number"   id="montantFcfa"/>&nbsp;&nbsp;
+                  
+                <select name="deviseDepart" class="form-control" [(ngModel)]=deviseDepart>
+                  <option value="FCFA">FCFA</option>
+                  <option value="USD">USD</option>
+                  <option value="EURO">EURO</option>
+                </select>
+              </p>
+            </form>
+          <p>
+        </td>
+
+        
+      </tr>
+      
+      
+      <tr>
+      <td><label for="montantDollars">Montant en $</label></td>
+      <td><input type="text" value="{{montant | conversionFD:deviseDepart}}"  disabled /></td>
+      </tr>
+
+      <tr>
+        <td><label for="montantEuro">Montant en Euros</label></td>
+        <td><input type="text" value="{{montant | conversionFE:deviseDepart}}"  disabled /></td>
+      </tr>
+
+      <tr>
+        <td><label for="montantFcfa">Montant en Fcfa</label></td>
+        <td><input type="text" value="{{montant | conversionDE:deviseDepart}}"  disabled /></td>
+      </tr>
+    </table>
+    <span id="responsable"> ___by TONLEU Blanche__</span>
+  </body>
+</html>
